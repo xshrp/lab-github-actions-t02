@@ -27,7 +27,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Simular tests
-        run: echo "Ejecutando tests..."
+        run: |
+          echo "Ejecutando tests..."  
+          exit 1
 
   deploy:
     name: Deploy
