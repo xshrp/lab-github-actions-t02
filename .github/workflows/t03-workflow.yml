@@ -51,4 +51,4 @@ jobs:
     needs: lanza-tag
     steps:
       - name: Captura el tag de lanza-tag
-        run: echo"${{ needs.lanza-tag.outputs.image-tag }}"
+        run: echo "${{ needs.lanza-tag.outputs.image-tag }}"
