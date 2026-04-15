@@ -5,15 +5,14 @@ on:
 
 jobs:
   prueba:
-    name: Build Docker Image
+    name: Imprimir contexto
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
 
-      - name: Build imagen (sin push)
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: false
-          tags: lab-github-actions:${{ github.sha }}
+    steps:
+      - name: Mostrar info
+        run: |
+          echo "SHA: ${{ github.sha }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Evento: ${{ github.event_name }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Runner OS: ${{ runner.os }}"
