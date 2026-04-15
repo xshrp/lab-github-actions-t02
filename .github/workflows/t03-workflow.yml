@@ -3,6 +3,7 @@ name: Taller03
 env: # ← nivel workflow (disponible en todos los jobs)
   APP_NAME: lab-github-actions
   REGISTRY: docker.io
+  IMAGE_TAG: ${{ github.sha }}
 
 on:
   workflow_dispatch:
@@ -25,7 +26,7 @@ jobs:
           echo "Target: $BUILD_TARGET"
           echo "Step var: $STEP_VAR"
           echo " ------------------- "
-          echo "SHA: ${{ github.sha }}"
+          echo "SHA: $IMAGE_TAG"
           echo "Branch: ${{ github.ref_name }}"
           echo "Evento: ${{ github.event_name }}"
           echo "Actor: ${{ github.actor }}"
