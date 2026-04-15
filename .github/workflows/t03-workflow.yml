@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  prueba:
+  mostrar-informacion:
     name: Imprimir contexto
     runs-on: ubuntu-latest
     env:                      # ← nivel job (disponible en todos los steps del job)
@@ -34,7 +34,9 @@ jobs:
   lanza-tag:
     name: Genera un tag y lo captura en el otro step
     runs-on: ubuntu-latest
-    needs: prueba
+    needs: mostrar-informacion
+    outputs:
+      image-tag: ${{ steps.tag.outputs.value }}   # ← expone el output del job
     steps:
         - name: Generar tag de imagen
           id: tag # ← necesario para referenciarlo después
@@ -43,3 +45,10 @@ jobs:
             echo "value=$SHORT_SHA" >> "$GITHUB_OUTPUT"
         - name: Captura un tag 
           run: echo "${{ steps.tag.outputs.value }}"
+  captura-tag:
+    name: Captura un tag de otro job
+    runs-on: ubuntu-latest
+    needs: lanza-tag
+    steps:
+      - name: Captura el tag de lanza-tag
+        run: echo"${{ needs.lanza-tag.outputs.image-tag }}"
