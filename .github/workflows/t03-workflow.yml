@@ -40,6 +40,6 @@ jobs:
           id: tag # ← necesario para referenciarlo después
           run: |
             SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
-            echo "value=$SHORT_SHA" >> $GITHUB_OUTPUT"
+            echo "value=$SHORT_SHA" >> "$GITHUB_OUTPUT"
         - name: Captura un tag 
           run: echo "${{ steps.tag.outputs.value }}"
