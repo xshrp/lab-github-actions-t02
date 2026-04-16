@@ -1,0 +1,6 @@
+try{
+  haceEsto();
+}
+catch(error){
+  
+}
