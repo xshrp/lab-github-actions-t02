@@ -3,7 +3,7 @@ let pass = "adminadmin"
 const key = "iausdioasudioasn1xazz521a65163"
 
 try{
-funcionInexistente();
+  funcionInexistente();
 }
 catch(error){
   
