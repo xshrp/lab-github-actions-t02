@@ -1,8 +1,11 @@
-name: Pipeline DevOps
+name: Pipeline V3
 
 on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
-
 env:
   APP_NAME: lab-github-actions
 
