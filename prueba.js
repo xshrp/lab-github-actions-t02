@@ -1,0 +1,6 @@
+try{
+  prueba();
+}
+catch(error){
+  
+}
